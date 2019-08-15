@@ -7,53 +7,27 @@ const colors = require('colors/safe');
 
 // Setup frames in memory
 let original;
-let flipped;
 
 (async () => {
-  const framesPath = 'frames';
-  const files = await fs.readdir(framesPath);
-
-  original = await Promise.all(files.map(async (file) => {
-    const frame = await fs.readFile(path.join(framesPath, file));
-    return frame.toString();
-  }));
-  flipped = original.map(f => {
-    return f
-      .toString()
-      .split('')
-      .reverse()
-      .join('')
-  })
+  original = JSON.parse(await fs.readFile('frames.json')).map(shit => shit.split('').join(' '));
 })().catch((err) => {
   console.log('Error loading frames');
   console.log(err);
 });
 
 const colorsOptions = [
-  'red',
-  'yellow',
-  'green',
-  'blue',
-  'magenta',
-  'cyan',
   'white'
 ];
 const numColors = colorsOptions.length;
 const selectColor = previousColor => {
-  let color;
-
-  do {
-    color = Math.floor(Math.random() * numColors);
-  } while (color === previousColor);
-
-  return color;
+  return 0
 };
 
 const streamer = (stream, opts) => {
   let index = 0;
   let lastColor;
   let frame = null;
-  const frames = opts.flip ? flipped : original;
+  const frames = original;
 
   return setInterval(() => {
     // clear the screen
@@ -64,7 +38,7 @@ const streamer = (stream, opts) => {
     stream.push(colors[colorsOptions[newColor]](frames[index]));
 
     index = (index + 1) % frames.length;
-  }, 70);
+  }, 50);
 };
 
 const validateQuery = ({ flip }) => ({

@@ -1,22 +1,28 @@
 {
   "name": "parrot-live",
   "version": "1.0.0",
-  "description": "",
+  "description": "An initiative, using frames from [`terminal-parrot`](https://github.com/jmhobbs/terminal-parrot), to allow any computer with `curl` to display an _animated_ party parrot.",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "dependencies": {
-    "colors": "1.1.2",
-    "mz": "2.7.0"
+    "colors": "^1.1.2",
+    "fs": "0.0.1-security",
+    "mz": "^2.7.0"
   },
   "devDependencies": {
     "nodemon": "1.18.7"
   },
-  "author": {
-    "name": "Hugo Muller-Downing",
-    "email": "npmjs@hugo.sx",
-    "url": "hu.md"
+  "author": "Hugo Muller-Downing <npmjs@hugo.sx> (hu.md)",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NoahFiner/parrot.live.git"
   },
-  "license": "MIT"
+  "bugs": {
+    "url": "https://github.com/NoahFiner/parrot.live/issues"
+  },
+  "homepage": "https://github.com/NoahFiner/parrot.live#readme"
 }
