@@ -9,7 +9,7 @@ const colors = require('colors/safe');
 let original;
 
 (async () => {
-  original = JSON.parse(await fs.readFile('frames.json')).map(shit => shit.split('').join(' '));
+  original = JSON.parse(await fs.readFile('frames.json'));
 })().catch((err) => {
   console.log('Error loading frames');
   console.log(err);
